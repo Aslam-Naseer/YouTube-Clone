@@ -1,2 +1,2 @@
 # YouTube-Clone-CSS
-A clone of YouTube homepage using HTML and CSS 
+A clone of YouTube webapp homepage using HTML and CSS 
