@@ -1,0 +1,41 @@
+.subheader{
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  position: fixed;
+  top: 56px;
+  right: 30px;
+  left: 94px;
+  height: 56px;
+  white-space: nowrap;
+  overflow-x: auto;
+  background-color: white;
+}
+
+.subheader::-webkit-scrollbar {
+  display: none;
+}
+
+.subheader button{
+  font-size: 14px;
+  padding: 8px 12.5px;
+  margin: 0 6px;
+  border-style: none;
+  border-radius: 8px;
+}
+
+.allbutton{
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.subbutton{
+  background-color: rgb(240, 240, 240);
+  transition: background-color 0.2s;
+}
+
+.subbutton:hover{
+  background-color: rgb(220,220,220);
+  cursor: pointer;
+}

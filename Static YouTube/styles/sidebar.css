@@ -1,0 +1,29 @@
+.sidebar{
+  position: fixed;
+  top: 56px;
+  bottom: 0;
+  left: 0;
+  width: 72px;
+
+  display: flex;
+  flex-direction: column;
+  z-index: 200;
+}
+
+.SB{
+  border-radius: 5px;
+  font-size: 10px;
+  border-style: none;
+  height: 76px;
+  background-color: white;
+  transition: background-color 0.1s;
+}
+.SB:hover{
+  background-color: rgb(224, 224, 224);
+  cursor: pointer;
+}
+
+.SB img{
+  width: 24px;
+  margin-bottom: 4.5px;
+}
