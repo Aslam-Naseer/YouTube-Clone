@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const BASE_URL = "https://youtube-v31.p.rapidapi.com/captions";
+const BASE_URL = "https://youtube-v31.p.rapidapi.com";
 
 const options = {
   url: BASE_URL,
   params: {
-    maxResult: "50",
+    part: "snippet",
   },
   headers: {
     "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
