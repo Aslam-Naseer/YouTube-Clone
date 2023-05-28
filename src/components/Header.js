@@ -20,6 +20,7 @@ const Header = () => {
           alt="logo"
         />
       </div>
+
       <div className="mid-section">
         <input type="search" className="search-bar" placeholder="Search" />
         <button className="search-button">
@@ -31,6 +32,7 @@ const Header = () => {
           <div className="toolkit">Search with your voice</div>
         </button>
       </div>
+
       <div className="right-section">
         <div className="IB">
           <img src={upload} style={{ height: "24px" }} alt="upload" />

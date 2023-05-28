@@ -10,31 +10,16 @@ export const Video = () => {
   return (
     <div className="vid-div">
       <div className="thumbnail-grid">
-        <a href="https://www.youtube.com/watch?v=n2RNcPRtAiY&t=542s">
-          <img
-            src={demoThumbnailUrl}
-            className="thumbnail-pic"
-            alt="thumbnail"
-          />
-        </a>
+        <img src={demoThumbnailUrl} className="thumbnail-pic" alt="thumbnail" />
         <div className="vid-time">14:20</div>
       </div>
       <div className="stats-grid">
         <div className="pfp-div">
-          <a href="https://www.youtube.com/c/mkbhd">
-            <img src={demoProfilePicture} className="pfp" alt="channel-pfp" />
-          </a>
+          <img src={demoProfilePicture} className="pfp" alt="channel-pfp" />
         </div>
         <div className="stats-div">
-          <a
-            className="vid-title"
-            href="https://www.youtube.com/watch?v=n2RNcPRtAiY&t=542s"
-          >
-            {demoVideoTitle}
-          </a>
-          <a className="vid-author" href="https://www.youtube.com/c/mkbhd">
-            {demoChannelTitle}
-          </a>
+          <span className="vid-title">{demoVideoTitle}</span>
+          <span className="vid-author">{demoChannelTitle}</span>
           <p className="vid-stats">3.4M views · 6 months ago</p>
         </div>
       </div>
