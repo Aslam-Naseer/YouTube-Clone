@@ -1,4 +1,4 @@
-.subheader{
+.subheader {
   display: flex;
   align-items: center;
   z-index: 100;
@@ -16,7 +16,7 @@
   display: none;
 }
 
-.subheader button{
+.subheader button {
   font-size: 14px;
   padding: 8px 12.5px;
   margin: 0 6px;
@@ -24,18 +24,18 @@
   border-radius: 8px;
 }
 
-.allbutton{
+.selected-category {
   background-color: black;
   color: white;
   cursor: pointer;
 }
 
-.subbutton{
+.category {
   background-color: rgb(240, 240, 240);
   transition: background-color 0.2s;
 }
 
-.subbutton:hover{
-  background-color: rgb(220,220,220);
+.category:hover {
+  background-color: rgb(220, 220, 220);
   cursor: pointer;
 }

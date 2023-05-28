@@ -1,7 +1,21 @@
 import React from "react";
+import { categories } from "../utils/constants";
 
 const CategoriesBar = () => {
-  return <div>CategoriesBar</div>;
+  const selected = "All";
+
+  const divs = [];
+  categories.forEach((category) =>
+    divs.push(
+      <button
+        className={category === selected ? "selected-category" : "category"}
+      >
+        {category}
+      </button>
+    )
+  );
+
+  return <nav className="subheader">{divs}</nav>;
 };
 
 export default CategoriesBar;

@@ -12,7 +12,7 @@ const Homescreen = () => {
   return (
     <div>
       <CategoriesBar />
-      {videosDiv}
+      <div className="vid-grid">{videosDiv}</div>
     </div>
   );
 };
