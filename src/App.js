@@ -5,11 +5,13 @@ import Sidebar from "./components/Sidebar";
 
 const App = () => {
   return (
-    <div>
+    <>
       <Header />
-      <Sidebar />
-      <Homescreen />
-    </div>
+      <div className="app-container">
+        <Sidebar />
+        <Homescreen />
+      </div>
+    </>
   );
 };
 
