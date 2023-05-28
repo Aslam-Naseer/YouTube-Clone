@@ -1,0 +1,11 @@
+export { default as hamburgerMenu } from "./hamburger-menu.svg";
+export { default as youtubeLogo } from "./youtube-logo.svg";
+export { default as home } from "./home.svg";
+export { default as library } from "./library.svg";
+export { default as notifications } from "./notifications.svg";
+export { default as search } from "./search.svg";
+export { default as explore } from "./explore.svg";
+export { default as subscriptions } from "./subscriptions.svg";
+export { default as upload } from "./upload.svg";
+export { default as voiceSearch } from "./voice-search-icon.svg";
+export { default as youtubeApps } from "./youtube-apps.svg";

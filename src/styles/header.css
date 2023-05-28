@@ -1,5 +1,5 @@
-.header{
-  display:flex;
+.header {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   height: 56px;
@@ -7,26 +7,26 @@
 
   position: fixed;
   z-index: 200;
-  top:0;
+  top: 0;
   right: 0;
   left: 0;
 
 }
 
-.left-section{
-  width:184px;
+.left-section {
+  width: 184px;
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
 
-.hamburger-menu{
+.hamburger-menu {
   height: 24px;
   margin: 0 24px;
   cursor: pointer;
 }
 
-.mid-section{
+.mid-section {
   flex: 1;
   margin: 0 35px 0 60px;
   max-width: 675px;
@@ -36,33 +36,39 @@
 }
 
 
-.search-bar{
+.search-bar {
   padding-left: 15px;
   margin-left: 23px;
   height: 40px;
-  border: 1px solid rgb(211,211,211);
+  border: 1px solid rgb(211, 211, 211);
   border-radius: 20px 0 0 20px;
   flex: 1;
-  width:0;
+  width: 0;
   font-size: 16.3px;
-
-}
-.search-bar::placeholder{
-  font-size: 16.3px;
+  z-index: 1;
 }
 
-.search-button{
-  height:40px;
+.search-bar:focus {
+  outline: none;
+  border: 1px solid blue;
+}
+
+.search-bar::placeholder {
+  font-size: 16.3px;
+}
+
+.search-button {
+  height: 40px;
   width: 62px;
-  border: 1px solid rgb(211,211,211);
+  border: 1px solid rgb(211, 211, 211);
   border-radius: 0 20px 20px 0;
   margin-left: -1px;
   background-color: rgb(248, 248, 248);
   transition: background-color 0.2s;
 }
 
-.voice-button{
-  height:40px;
+.voice-button {
+  height: 40px;
   width: 40px;
   margin-left: 10px;
   border-radius: 20px;
@@ -71,7 +77,7 @@
   transition: background-color 0.2s;
 }
 
-.right-section{
+.right-section {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -79,8 +85,8 @@
 
 }
 
-.IB{
-  height:40px;
+.IB {
+  height: 40px;
   width: 40px;
   margin: 0 5px;
   border-radius: 20px;
@@ -88,19 +94,20 @@
   transition: background-color 0.2s;
 }
 
-.my-pfp{
-  height: 33px;
+.my-pfp {
+  height: 45px;
   border-radius: 20px;
   margin-left: 12px;
+  cursor: pointer;
 }
 
-.notif-count{
+.notif-count {
   position: absolute;
-  top:2px;
+  top: 2px;
   right: 0px;
 
-  background-color: rgb(204,0,0);
-  color:white;
+  background-color: rgb(204, 0, 0);
+  color: white;
   padding: 0 4px;
   font-size: 12px;
   border: 2px solid white;
@@ -109,20 +116,20 @@
 
 .search-button,
 .voice-button,
-.IB{
+.IB {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.toolkit{
+.toolkit {
   position: absolute;
   bottom: -50px;
   white-space: nowrap;
   z-index: 200;
 
-  font-style: roboto,arial;
+  font-style: roboto, arial;
   font-size: 12px;
   padding: 10px 8px;
   background-color: rgba(52, 52, 52, 0.7);
@@ -135,27 +142,24 @@
 
 .search-button:hover .toolkit,
 .voice-button:hover .toolkit,
-.IB:hover .toolkit{
+.IB:hover .toolkit {
   opacity: 1;
 }
 
 .search-button:hover,
 .voice-button:hover,
-.IB:hover{
+.IB:hover {
   background-color: rgb(216, 216, 216);
   cursor: pointer;
 }
 
-@media (max-width: 650px){
-  .search-bar{
+@media (max-width: 650px) {
+  .search-bar {
     display: none;
   }
-  .mid-section button{
+
+  .mid-section button {
     border-style: none;
     background-color: white;
   }
 }
-
-
-
-
