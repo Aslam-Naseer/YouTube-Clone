@@ -7,5 +7,6 @@ import "./styles/header.css";
 import "./styles/sidebar.css";
 import "./styles/category-bar.css";
 import "./styles/vid-grid.css";
+import "./styles/login-screen.css";
 
 ReactDOM.render(<App />, document.getElementById("root"));
