@@ -1,3 +1,8 @@
+:root {
+  --category: #272727;
+  --category-hover: #333
+}
+
 .subheader {
   display: flex;
   align-items: center;
@@ -9,7 +14,7 @@
   height: 56px;
   white-space: nowrap;
   overflow-x: auto;
-  background-color: white;
+  background-color: var(--black-primary);
 }
 
 .subheader::-webkit-scrollbar {
@@ -25,17 +30,18 @@
 }
 
 .selected-category {
-  background-color: black;
-  color: white;
+  background-color: white;
   cursor: pointer;
+  color: black;
 }
 
 .category {
-  background-color: rgb(240, 240, 240);
+  background-color: var(--category);
   transition: background-color 0.2s;
+  color: white
 }
 
 .category:hover {
-  background-color: rgb(220, 220, 220);
+  background-color: var(--category-hover);
   cursor: pointer;
 }

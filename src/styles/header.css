@@ -1,9 +1,14 @@
+:root {
+  --voice: #151515;
+  --header-hover: #333
+}
+
 .header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   height: 56px;
-  background-color: white;
+  background-color: var(--black-primary);
 
   position: fixed;
   z-index: 200;
@@ -40,7 +45,8 @@
   padding-left: 15px;
   margin-left: 23px;
   height: 40px;
-  border: 1px solid rgb(211, 211, 211);
+  background-color: var(--black-primary);
+  border: 1px solid var(--border-color);
   border-radius: 20px 0 0 20px;
   flex: 1;
   width: 0;
@@ -50,7 +56,7 @@
 
 .search-bar:focus {
   outline: none;
-  border: 1px solid blue;
+  border: 1px solid rgb(41, 123, 255);
 }
 
 .search-bar::placeholder {
@@ -60,10 +66,10 @@
 .search-button {
   height: 40px;
   width: 62px;
-  border: 1px solid rgb(211, 211, 211);
+  border: 1px solid var(--border-color);
   border-radius: 0 20px 20px 0;
   margin-left: -1px;
-  background-color: rgb(248, 248, 248);
+  background-color: var(--black-secondary);
   transition: background-color 0.2s;
 }
 
@@ -73,7 +79,7 @@
   margin-left: 10px;
   border-radius: 20px;
   border-style: none;
-  background-color: rgb(248, 248, 248);
+  background-color: var(--voice);
   transition: background-color 0.2s;
 }
 
@@ -110,7 +116,7 @@
   color: white;
   padding: 0 4px;
   font-size: 12px;
-  border: 2px solid white;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
 }
 
@@ -132,7 +138,7 @@
   font-style: roboto, arial;
   font-size: 12px;
   padding: 10px 8px;
-  background-color: rgba(52, 52, 52, 0.7);
+  background-color: #333333ee;
   border-radius: 3px;
   color: white;
   opacity: 0;
@@ -146,10 +152,9 @@
   opacity: 1;
 }
 
-.search-button:hover,
 .voice-button:hover,
 .IB:hover {
-  background-color: rgb(216, 216, 216);
+  background-color: var(--header-hover);
   cursor: pointer;
 }
 

@@ -30,10 +30,10 @@ export const Video = () => {
             className="vid-title"
             href="https://www.youtube.com/watch?v=n2RNcPRtAiY&t=542s"
           >
-            Talking Tech and AI with Google CEO Sundar Pichai!
+            {demoVideoTitle}
           </a>
           <a className="vid-author" href="https://www.youtube.com/c/mkbhd">
-            Marques Brownlee
+            {demoChannelTitle}
           </a>
           <p className="vid-stats">3.4M views · 6 months ago</p>
         </div>
