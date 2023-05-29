@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CategoriesBar from "../components/CategoriesBar";
 import { Video } from "../components/Video";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Homescreen = () => {
   const videos = Array(20).fill(2);
