@@ -5,10 +5,11 @@ const CategoriesBar = () => {
   const selected = "All";
 
   const divs = [];
-  categories.forEach((category) =>
+  categories.forEach((category, index) =>
     divs.push(
       <button
         className={category === selected ? "selected-category" : "category"}
+        key={index}
       >
         {category}
       </button>

@@ -5,7 +5,7 @@ const Homescreen = () => {
   const videos = Array(20).fill(2);
   const videosDiv = [];
 
-  videos.forEach((vid) => videosDiv.push(<Video />));
+  videos.forEach((vid, index) => videosDiv.push(<Video key={index} />));
 
   return (
     <div>
