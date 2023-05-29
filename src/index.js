@@ -12,12 +12,16 @@ import "./styles/sidebar.css";
 import "./styles/category-bar.css";
 import "./styles/vid-grid.css";
 import "./styles/login-screen.css";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Loginscreen from "./screens/Loginscreen";
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <Routes>
+        <Route path="/auth" element={<Loginscreen />}></Route>
+        <Route path="*" element={<App />} />
+      </Routes>
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")

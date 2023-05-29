@@ -7,9 +7,11 @@ import {
 } from "../actionType";
 
 const initialState = {
-  accessToken: null,
-  user: null,
-  loading: null,
+  accessToken: sessionStorage.getItem("ytc-access-token") || null,
+  user: sessionStorage.getItem("ytc-user")
+    ? JSON.parse(sessionStorage.getItem("ytc-user"))
+    : null,
+  loading: false,
 };
 
 export const authReducer = (prevState = initialState, action) => {

@@ -9,13 +9,11 @@ const Loginscreen = () => {
   const navigate = useNavigate();
   const authStatus = useSelector((state) => state.auth.accessToken);
   useEffect(() => {
-    console.log(authStatus);
     if (authStatus) navigate("/");
   }, [authStatus, navigate]);
 
   const handler = () => {
     dispatch(login());
-    console.log("handler");
   };
 
   return (

@@ -1,6 +1,5 @@
 import {
   getAuth,
-  onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
@@ -29,6 +28,9 @@ export const login = () => async (dispatch) => {
 
     dispatch({ type: LOGIN_SUCCESS, payload: accessToken });
     dispatch({ type: LOAD_PROFILE, payload: profile });
+
+    sessionStorage.setItem("ytc-access-token", accessToken);
+    sessionStorage.setItem("ytc-user", JSON.stringify(profile));
   } catch (e) {
     console.error(e);
     dispatch({ type: LOGIN_FAIL, payload: e.message });
@@ -39,7 +41,9 @@ export const logout = () => async (dispatch) => {
   try {
     await signOut(getAuth());
     dispatch({ type: LOG_OUT });
-    console.log("logout");
+
+    sessionStorage.removeItem("ytc-access-token");
+    sessionStorage.removeItem("ytc-user");
   } catch (e) {
     console.error(e);
   }
