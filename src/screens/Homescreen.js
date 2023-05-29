@@ -1,16 +1,25 @@
+import { useDispatch, useSelector } from "react-redux";
 import CategoriesBar from "../components/CategoriesBar";
 import { Video } from "../components/Video";
+import { useEffect } from "react";
+import { getHomeVideos } from "../redux/actions/videos.action";
 
 const Homescreen = () => {
-  const videos = Array(20).fill(2);
-  const videosDiv = [];
+  const vidsData = useSelector((state) => state.homeVids.videos);
 
-  videos.forEach((vid, index) => videosDiv.push(<Video key={index} />));
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getHomeVideos());
+  }, [dispatch]);
 
   return (
     <div>
       <CategoriesBar />
-      <div className="vid-grid">{videosDiv}</div>
+      <div className="vid-grid">
+        {vidsData.map((vid) => (
+          <Video video={vid} key={vid.id} />
+        ))}
+      </div>
     </div>
   );
 };
