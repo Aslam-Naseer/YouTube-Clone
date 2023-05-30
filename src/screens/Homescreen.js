@@ -2,14 +2,14 @@ import { useDispatch, useSelector } from "react-redux";
 import CategoriesBar from "../components/CategoriesBar";
 import { Video } from "../components/Video";
 import { useEffect } from "react";
-import { getHomeVideos } from "../redux/actions/videos.action";
+import { getPopularVideos } from "../redux/actions/videos.action";
 
 const Homescreen = () => {
   const vidsData = useSelector((state) => state.homeVids.videos);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getHomeVideos());
+    dispatch(getPopularVideos());
   }, [dispatch]);
 
   return (
@@ -17,7 +17,7 @@ const Homescreen = () => {
       <CategoriesBar />
       <div className="vid-grid">
         {vidsData.map((vid) => (
-          <Video video={vid} key={vid.id} />
+          <Video video={vid} key={vid.id?.videoId || vid.id} />
         ))}
       </div>
     </div>

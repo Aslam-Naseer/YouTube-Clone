@@ -23,7 +23,7 @@ export const Video = ({ video }) => {
       channelId,
       title,
       publishedAt,
-      thumbnails: { medium },
+      thumbnails: { high },
     },
   } = video;
 
@@ -34,6 +34,8 @@ export const Video = ({ video }) => {
 
   const vidPublished = moment(publishedAt).fromNow(false);
 
+  const vidId = id?.videoId || id;
+
   useEffect(() => {
     const getVideoDetails = async () => {
       const {
@@ -41,14 +43,14 @@ export const Video = ({ video }) => {
       } = await fetchData("/videos", {
         params: {
           part: "contentDetails,statistics",
-          id,
+          id: vidId,
         },
       });
       setDuration(items[0].contentDetails.duration);
       setViews(items[0].statistics.viewCount);
     };
     getVideoDetails();
-  }, [id]);
+  }, [vidId]);
 
   useEffect(() => {
     const getChannelIcon = async () => {
@@ -69,7 +71,7 @@ export const Video = ({ video }) => {
     <div className="vid-div">
       <div className="thumbnail-grid">
         <img
-          src={medium.url || demoThumbnailUrl}
+          src={high.url || demoThumbnailUrl}
           className="thumbnail-pic"
           alt="thumbnail"
         />
