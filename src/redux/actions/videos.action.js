@@ -5,9 +5,8 @@ import {
 } from "../actionType";
 
 import fetchData from "../../fetchData";
-import { keyboard } from "@testing-library/user-event/dist/keyboard";
 
-export const getPopularVideos = () => async (dispatch) => {
+export const getPopularVideos = () => async (dispatch, getState) => {
   try {
     dispatch({ type: HOME_VID_REQUEST });
 
@@ -15,7 +14,8 @@ export const getPopularVideos = () => async (dispatch) => {
       params: {
         part: "snippet,contentDetails,statistics",
         chart: "mostPopular",
-        maxResults: 18,
+        maxResults: 12,
+        pageToken: getState().homeVids.nextPageToken,
       },
     });
 
@@ -23,7 +23,7 @@ export const getPopularVideos = () => async (dispatch) => {
       type: HOME_VID_SUCCESS,
       payload: {
         videos: data.items,
-        nextPageToken: "",
+        nextPageToken: data.nextPageToken,
         category: "All",
       },
     });
@@ -33,16 +33,17 @@ export const getPopularVideos = () => async (dispatch) => {
   }
 };
 
-export const getCategoryVideos = (query) => async (dispatch) => {
+export const getCategoryVideos = (query) => async (dispatch, getState) => {
   try {
     dispatch({ type: HOME_VID_REQUEST });
 
     const { data } = await fetchData("/search", {
       params: {
         part: "snippet",
-        maxResults: 18,
+        maxResults: 12,
         q: query,
         type: "video",
+        pageToken: getState().homeVids.nextPageToken,
       },
     });
 
@@ -52,7 +53,7 @@ export const getCategoryVideos = (query) => async (dispatch) => {
       type: HOME_VID_SUCCESS,
       payload: {
         videos: data.items,
-        nextPageToken: "",
+        nextPageToken: data.nextPageToken,
         category: query,
       },
     });

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { categories } from "../utils/constants";
-import { getCategoryVideos } from "../redux/actions/videos.action";
+import {
+  getCategoryVideos,
+  getPopularVideos,
+} from "../redux/actions/videos.action";
 import { useDispatch } from "react-redux";
 
 const CategoriesBar = () => {
@@ -8,7 +11,8 @@ const CategoriesBar = () => {
   const dispatch = useDispatch();
 
   const selectCategory = (query) => {
-    dispatch(getCategoryVideos(query));
+    if (query === "All") dispatch(getPopularVideos());
+    else dispatch(getCategoryVideos(query));
     setSelected(query);
   };
 
