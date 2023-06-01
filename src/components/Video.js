@@ -86,7 +86,9 @@ export const Video = ({ video }) => {
           />
         </div>
         <div className="stats-div">
-          <span className="vid-title">{title || demoVideoTitle}</span>
+          <span className="vid-title" title={title || demoChannelTitle}>
+            {title || demoVideoTitle}
+          </span>
           <span className="vid-author">{channelTitle || demoChannelTitle}</span>
           <p className="vid-stats">
             {vidViews} views · {vidPublished}

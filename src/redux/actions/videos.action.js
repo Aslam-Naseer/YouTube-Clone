@@ -47,8 +47,6 @@ export const getCategoryVideos = (query) => async (dispatch, getState) => {
       },
     });
 
-    console.log(data);
-
     dispatch({
       type: HOME_VID_SUCCESS,
       payload: {
