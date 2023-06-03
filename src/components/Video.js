@@ -67,6 +67,8 @@ export const Video = ({ video }) => {
     getChannelIcon();
   }, [channelId]);
 
+  console.log("vids");
+
   return (
     <div className="vid-div">
       <div className="thumbnail-grid">
