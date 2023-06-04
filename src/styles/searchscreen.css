@@ -1,0 +1,50 @@
+.search-screen-div>div {
+  margin-bottom: 20px;
+}
+
+.vid-div-horizontal.searchScreen {
+  grid-template-columns: auto 1fr;
+  gap: 25px;
+}
+
+.searchScreen .thumbnail-horizontal {
+  width: 370px;
+}
+
+.searchScreen .vid-title-horizontal {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.searchScreen .vid-details-horizontal {
+  display: flex;
+  flex-direction: column;
+}
+
+.searchScreen .channel-horizontal {
+  order: 3;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.searchScreen .views-publish-horizontal {
+  order: 2;
+  margin-top: -5px;
+}
+
+.searchScreen .description-horizontal {
+  order: 4;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.search-screen-div {
+  margin: 20px 50px 0 20px;
+}
