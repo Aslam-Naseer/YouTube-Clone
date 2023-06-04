@@ -67,15 +67,33 @@
   background-color: #444;
 }
 
+.like-count {
+  font-size: 14px;
+}
+
 .more-details {
+  color: #f1f1f1;
   background-color: #272727;
   padding: 8px;
   border-radius: 10px;
+  font-size: 14px;
+}
+
+.more-details:hover {
+  background-color: #363636;
 }
 
 .views-release {
-  color: white;
   font-weight: 500;
+}
+
+.show-more-less {
+  display: block;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.description {
   font-size: 14px;
 }
 

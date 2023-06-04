@@ -8,17 +8,20 @@ import {
   youtubeApps,
   notifications,
 } from "../icons";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header className="header">
       <div className="left-section">
         <img src={hamburgerMenu} className="hamburger-menu" alt="menu" />
-        <img
-          src={youtubeLogo}
-          style={{ height: "20px", cursor: "pointer" }}
-          alt="logo"
-        />
+        <Link to="/">
+          <img
+            src={youtubeLogo}
+            style={{ height: "20px", cursor: "pointer" }}
+            alt="logo"
+          />
+        </Link>
       </div>
 
       <div className="mid-section">

@@ -2,6 +2,9 @@ import {
   HOME_VID_FAIL,
   HOME_VID_REQUEST,
   HOME_VID_SUCCESS,
+  VIDEO_SEARCH_FAIL,
+  VIDEO_SEARCH_REQUEST,
+  VIDEO_SEARCH_SUCCESS,
 } from "../actionType";
 
 import fetchData from "../../fetchData";
@@ -58,5 +61,24 @@ export const getCategoryVideos = (query) => async (dispatch, getState) => {
   } catch (e) {
     console.error(e);
     dispatch({ type: HOME_VID_FAIL, payload: e.message });
+  }
+};
+
+export const getSelectedVideo = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: VIDEO_SEARCH_REQUEST });
+    const { data } = await fetchData("/videos", {
+      params: {
+        part: "snippet,statistics",
+        id: id,
+      },
+    });
+    dispatch({ type: VIDEO_SEARCH_SUCCESS, payload: data.items[0] });
+  } catch (e) {
+    console.log(e.message);
+    dispatch({
+      type: VIDEO_SEARCH_FAIL,
+      payload: e.message,
+    });
   }
 };

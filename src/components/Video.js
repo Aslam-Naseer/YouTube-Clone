@@ -10,6 +10,7 @@ import fetchData from "../fetchData";
 
 import moment from "moment";
 import numeral from "numeral";
+import { Link } from "react-router-dom";
 
 export const Video = ({ video }) => {
   const [views, setViews] = useState(0);
@@ -72,11 +73,13 @@ export const Video = ({ video }) => {
   return (
     <div className="vid-div">
       <div className="thumbnail-grid">
-        <img
-          src={high.url || demoThumbnailUrl}
-          className="thumbnail-pic"
-          alt="thumbnail"
-        />
+        <Link to={`/watch/${vidId}`}>
+          <img
+            src={high.url || demoThumbnailUrl}
+            className="thumbnail-pic"
+            alt="thumbnail"
+          />
+        </Link>
         <div className="vid-time">{vidDuration}</div>
       </div>
       <div className="stats-grid">
@@ -88,9 +91,11 @@ export const Video = ({ video }) => {
           />
         </div>
         <div className="stats-div">
-          <span className="vid-title" title={title || demoChannelTitle}>
-            {title || demoVideoTitle}
-          </span>
+          <Link to={`/watch/${vidId}`}>
+            <span className="vid-title" title={title || demoChannelTitle}>
+              {title || demoVideoTitle}
+            </span>
+          </Link>
           <span className="vid-author">{channelTitle || demoChannelTitle}</span>
           <p className="vid-stats">
             {vidViews} views · {vidPublished}

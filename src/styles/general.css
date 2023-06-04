@@ -39,3 +39,7 @@ p {
 ::-webkit-scrollbar-thumb:hover {
   background: #888;
 }
+
+a {
+  text-decoration: none;
+}
