@@ -40,8 +40,12 @@
   align-items: center;
 }
 
+.search-form {
+  display: flex;
+}
 
 .search-bar {
+  color: white;
   padding-left: 15px;
   margin-left: 23px;
   height: 40px;
@@ -127,6 +131,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .toolkit {
@@ -155,7 +160,6 @@
 .voice-button:hover,
 .IB:hover {
   background-color: var(--header-hover);
-  cursor: pointer;
 }
 
 @media (max-width: 650px) {

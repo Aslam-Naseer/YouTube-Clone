@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   youtubeLogo,
   hamburgerMenu,
@@ -8,9 +8,17 @@ import {
   youtubeApps,
   notifications,
 } from "../icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+
+  const searchQuery = (e) => {
+    e.preventDefault();
+    if (!!searchTerm) navigate(`/search/${searchTerm}`);
+  };
+
   return (
     <header className="header">
       <div className="left-section">
@@ -25,8 +33,16 @@ const Header = () => {
       </div>
 
       <div className="mid-section">
-        <input type="search" className="search-bar" placeholder="Search" />
-        <button className="search-button">
+        <form id="search-form" onSubmit={searchQuery}></form>
+        <input
+          type="search"
+          className="search-bar"
+          placeholder="Search"
+          form="search-form"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button className="search-button" type="submit" form="search-form">
           <img src={search} style={{ height: "24px" }} alt="search" />
           <div className="toolkit">Search</div>
         </button>

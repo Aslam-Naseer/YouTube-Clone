@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import { useSelector } from "react-redux";
 import Watchscreen from "./screens/Watchscreen";
+import Searchscreen from "./screens/Searchscreen";
 
 const Layout = ({ children }) => (
   <>
@@ -30,6 +31,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Homescreen />} />
         <Route path="/watch/:id" element={<Watchscreen />} />
+        <Route path="/search/:query" element={<Searchscreen />} />
       </Routes>
     </Layout>
   );
