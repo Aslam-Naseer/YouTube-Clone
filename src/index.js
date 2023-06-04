@@ -13,6 +13,7 @@ import "./styles/category-bar.css";
 import "./styles/vid-grid.css";
 import "./styles/login-screen.css";
 import "./styles/watchscreen.css";
+import "./styles/vid-horizontal.css";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Loginscreen from "./screens/Loginscreen";

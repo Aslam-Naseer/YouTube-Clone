@@ -1,6 +1,6 @@
 .watch-screen {
   display: grid;
-  grid-template-columns: 1fr max(25%, 350px);
+  grid-template-columns: 1fr max(25%, 400px);
 }
 
 .watch-section {
@@ -95,8 +95,4 @@
 
 .description {
   font-size: 14px;
-}
-
-.recommendations {
-  border: 1px solid yellow;
 }

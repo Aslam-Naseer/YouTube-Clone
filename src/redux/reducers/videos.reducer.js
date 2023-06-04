@@ -2,6 +2,9 @@ import {
   HOME_VID_FAIL,
   HOME_VID_REQUEST,
   HOME_VID_SUCCESS,
+  RELATED_VIDEOS_FAIL,
+  RELATED_VIDEOS_REQUEST,
+  RELATED_VIDEOS_SUCCESS,
   VIDEO_SEARCH_FAIL,
   VIDEO_SEARCH_REQUEST,
   VIDEO_SEARCH_SUCCESS,
@@ -16,6 +19,11 @@ const initialStateHome = {
 
 const initialStateVid = {
   video: {},
+  loading: false,
+};
+
+const initialRelatedVids = {
+  videos: [],
   loading: false,
 };
 
@@ -65,5 +73,32 @@ export const selectedVideoReducer = (prevState = initialStateVid, action) => {
       };
     default:
       return prevState;
+  }
+};
+
+export const relatedVidsReducer = (state = initialRelatedVids, action) => {
+  const { type, payload } = action;
+
+  switch (type) {
+    case RELATED_VIDEOS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case RELATED_VIDEOS_SUCCESS:
+      return {
+        ...state,
+        videos: payload,
+        loading: false,
+      };
+    case RELATED_VIDEOS_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: payload,
+      };
+
+    default:
+      return state;
   }
 };

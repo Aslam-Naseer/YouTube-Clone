@@ -6,6 +6,7 @@ import thunk from "redux-thunk";
 import { authReducer } from "./reducers/auth.reducer";
 import {
   homeVideosReducer,
+  relatedVidsReducer,
   selectedVideoReducer,
 } from "./reducers/videos.reducer";
 import { channelDetailReducer } from "./reducers/channel.reducer";
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   homeVids: homeVideosReducer,
   selected: selectedVideoReducer,
   channelDetails: channelDetailReducer,
+  relatedVids: relatedVidsReducer,
 });
 
 const store = createStore(

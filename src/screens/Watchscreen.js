@@ -8,7 +8,10 @@ import {
 import { MdThumbUpOffAlt, MdThumbDownOffAlt } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getSelectedVideo } from "../redux/actions/videos.action";
+import {
+  getRelatedVideos,
+  getSelectedVideo,
+} from "../redux/actions/videos.action";
 
 import ReactShowMoreText from "react-show-more-text";
 import numeral from "numeral";
@@ -21,6 +24,9 @@ const Watchscreen = () => {
   const dispatch = useDispatch();
   const { snippet, statistics } = useSelector((state) => state.selected.video);
   const channelDetails = useSelector((state) => state.channelDetails.channel);
+  const vidsData = useSelector((state) => state.relatedVids.videos);
+
+  let published = null;
 
   useEffect(() => {
     dispatch(getSelectedVideo(id));
@@ -29,6 +35,16 @@ const Watchscreen = () => {
   useEffect(() => {
     dispatch(getChannelDetails(snippet?.channelId));
   }, [snippet, dispatch]);
+
+  useEffect(() => {
+    dispatch(getRelatedVideos(id));
+  }, [id, dispatch]);
+
+  if (moment().subtract(7, "days").isBefore(snippet?.publishedAt)) {
+    published = moment(snippet?.publishedAt).format("MMM DD, YYYY");
+  } else {
+    published = moment(snippet?.publishedAt).fromNow();
+  }
 
   return (
     <div className="watch-screen">
@@ -87,7 +103,7 @@ const Watchscreen = () => {
           <div className="views-release">
             <span>{numeral(statistics?.likeCount).format(0, 0.0)} views</span>
             &nbsp;&nbsp;
-            <span>{moment(snippet?.publishedAt).format("MMM DD, YYYY")}</span>
+            <span>{published}</span>
           </div>
           <ReactShowMoreText
             lines={3}
@@ -102,11 +118,9 @@ const Watchscreen = () => {
       </div>
 
       <div className="recommendations">
-        {Array(20)
-          .fill(2)
-          .map((val, index) => (
-            <VideoHorizontal key={index} />
-          ))}
+        {vidsData.map((vid) => (
+          <VideoHorizontal video={vid} key={vid.id.videoId} />
+        ))}
       </div>
     </div>
   );
