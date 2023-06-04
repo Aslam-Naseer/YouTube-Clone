@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { VideoHorizontal } from "../components/VideoHorizontal";
 import {
   demoChannelTitle,
@@ -26,11 +26,9 @@ const Watchscreen = () => {
   const channelDetails = useSelector((state) => state.channelDetails.channel);
   const vidsData = useSelector((state) => state.relatedVids.videos);
 
-  let published = null;
-
   useEffect(() => {
     dispatch(getSelectedVideo(id));
-  }, [id, dispatch]);
+  }, [id, snippet, dispatch]);
 
   useEffect(() => {
     dispatch(getChannelDetails(snippet?.channelId));
@@ -39,12 +37,6 @@ const Watchscreen = () => {
   useEffect(() => {
     dispatch(getRelatedVideos(id));
   }, [id, dispatch]);
-
-  if (moment().subtract(7, "days").isBefore(snippet?.publishedAt)) {
-    published = moment(snippet?.publishedAt).format("MMM DD, YYYY");
-  } else {
-    published = moment(snippet?.publishedAt).fromNow();
-  }
 
   return (
     <div className="watch-screen">
@@ -103,7 +95,11 @@ const Watchscreen = () => {
           <div className="views-release">
             <span>{numeral(statistics?.likeCount).format(0, 0.0)} views</span>
             &nbsp;&nbsp;
-            <span>{published}</span>
+            <span>
+              {moment().subtract(7, "days").isBefore(snippet?.publishedAt)
+                ? moment(snippet?.publishedAt).fromNow()
+                : moment(snippet?.publishedAt).format("MMM DD, YYYY")}
+            </span>
           </div>
           <ReactShowMoreText
             lines={3}
@@ -118,9 +114,14 @@ const Watchscreen = () => {
       </div>
 
       <div className="recommendations">
-        {vidsData.map((vid) => (
+        {/* {vidsData.map((vid) => (
           <VideoHorizontal video={vid} key={vid.id.videoId} />
-        ))}
+        ))} */}
+        {Array(10)
+          .fill({})
+          .map((vid, index) => (
+            <VideoHorizontal video={vid} key={index} />
+          ))}
       </div>
     </div>
   );

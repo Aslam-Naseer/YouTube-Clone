@@ -5,21 +5,13 @@ import {
   demoThumbnailUrl,
   demoVideoTitle,
 } from "../utils/constants";
-import { useDispatch } from "react-redux";
+
 import fetchData from "../fetchData";
 import moment from "moment";
 import numeral from "numeral";
 
 export const VideoHorizontal = ({ video }) => {
-  const {
-    id,
-    snippet: {
-      channelTitle,
-      title,
-      publishedAt,
-      thumbnails: { high },
-    },
-  } = video;
+  const { id, snippet } = video;
 
   const [duration, setDuration] = useState(0);
   const [views, setViews] = useState(0);
@@ -48,7 +40,7 @@ export const VideoHorizontal = ({ video }) => {
       <div className="thumbnail-horizontal">
         <Link to={`/watch/${id?.videoId}`}>
           <img
-            src={high.url}
+            src={snippet?.thumbnails?.high.url || demoThumbnailUrl}
             alt="thumbnail"
             className="thumbnail-horizontal-image"
           />
@@ -57,12 +49,14 @@ export const VideoHorizontal = ({ video }) => {
       </div>
       <div className="vid-details-horizontal">
         <Link to={`/watch/${id?.videoId}`}>
-          <div className="vid-title-horizontal">{title}</div>
+          <div className="vid-title-horizontal">
+            {snippet?.title || demoVideoTitle}
+          </div>
         </Link>
-        <div>{channelTitle}</div>
+        <div>{snippet?.channelTitle || demoChannelTitle}</div>
         <div>
           <span>{numeral(views).format("0.a").toUpperCase()} views</span>{" "}
-          &#x2022; <span>{moment(publishedAt).fromNow(false)}</span>
+          &#x2022; <span>{moment(snippet?.publishedAt).fromNow(false)}</span>
         </div>
       </div>
     </div>

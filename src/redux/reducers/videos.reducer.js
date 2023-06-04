@@ -68,7 +68,7 @@ export const selectedVideoReducer = (prevState = initialStateVid, action) => {
     case VIDEO_SEARCH_FAIL:
       return {
         ...prevState,
-        video: null,
+        video: {},
         error: payload,
       };
     default:
@@ -95,6 +95,7 @@ export const relatedVidsReducer = (state = initialRelatedVids, action) => {
       return {
         ...state,
         loading: false,
+        video: [],
         error: payload,
       };
 
