@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { VideoHorizontal } from "../components/VideoHorizontal";
 import {
   demoChannelTitle,
@@ -28,7 +28,7 @@ const Watchscreen = () => {
 
   useEffect(() => {
     dispatch(getSelectedVideo(id));
-  }, [id, snippet, dispatch]);
+  }, [id, dispatch]);
 
   useEffect(() => {
     dispatch(getChannelDetails(snippet?.channelId));
@@ -114,14 +114,14 @@ const Watchscreen = () => {
       </div>
 
       <div className="recommendations">
-        {/* {vidsData.map((vid) => (
+        {vidsData.map((vid) => (
           <VideoHorizontal video={vid} key={vid.id.videoId} />
-        ))} */}
-        {Array(10)
+        ))}
+        {/* {Array(10)
           .fill({})
           .map((vid, index) => (
             <VideoHorizontal video={vid} key={index} />
-          ))}
+          ))} */}
       </div>
     </div>
   );

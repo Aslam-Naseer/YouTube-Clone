@@ -16,8 +16,7 @@ export const VideoHorizontal = ({ video, searchScreen }) => {
 
   const [duration, setDuration] = useState(0);
   const [views, setViews] = useState(0);
-
-  console.log(searchScreen);
+  const [channelIcon, setChannelIcon] = useState(null);
 
   const seconds = moment.duration(duration).asSeconds();
 
@@ -37,7 +36,21 @@ export const VideoHorizontal = ({ video, searchScreen }) => {
     getVideoDetails();
   }, [id]);
 
-  console.log(video);
+  useEffect(() => {
+    const getChannelIcon = async () => {
+      const {
+        data: { items },
+      } = await fetchData("/channels", {
+        params: {
+          part: "snippet",
+          id: snippet?.channelId,
+        },
+      });
+      setChannelIcon(items[0].snippet.thumbnails.default.url);
+    };
+    getChannelIcon();
+  }, [snippet?.channelId]);
+
   return (
     <div className={`vid-div-horizontal ${searchScreen ? "searchScreen" : ""}`}>
       <div className={`thumbnail-horizontal`}>
@@ -59,7 +72,7 @@ export const VideoHorizontal = ({ video, searchScreen }) => {
         <div className="channel-horizontal">
           {searchScreen ? (
             <img
-              src={demoProfilePicture}
+              src={channelIcon || demoProfilePicture}
               alt="channel-pfp"
               className="channel-pfp-horizontal"
             />
@@ -71,9 +84,7 @@ export const VideoHorizontal = ({ video, searchScreen }) => {
           &#x2022; <span>{moment(snippet?.publishedAt).fromNow(false)}</span>
         </div>
         <div className="description-horizontal">
-          {searchScreen
-            ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Hendrerit gravida rutrum quisque non tellus orci ac auctor augue. Lacinia quis vel eros donec ac odio tempor. Aliquam malesuada bibendum arcu vitae elementum. Eget arcu dictum varius duis at consectetur lorem donec massa. Aliquam malesuada bibendum arcu vitae. Faucibus et molestie ac feugiat. Nibh praesent tristique magna sit amet purus. Faucibus in ornare quam viverra orci sagittis eu volutpat odio. Integer malesuada nunc vel risus commodo viverra maecenas accumsan. Duis ultricies lacus sed turpis tincidunt id aliquet risus."
-            : ""}
+          {searchScreen ? snippet?.description : ""}
         </div>
       </div>
     </div>

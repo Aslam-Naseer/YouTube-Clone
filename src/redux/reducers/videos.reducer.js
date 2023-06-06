@@ -5,6 +5,9 @@ import {
   RELATED_VIDEOS_FAIL,
   RELATED_VIDEOS_REQUEST,
   RELATED_VIDEOS_SUCCESS,
+  SEARCHED_VIDEO_FAIL,
+  SEARCHED_VIDEO_REQUEST,
+  SEARCHED_VIDEO_SUCCESS,
   VIDEO_SEARCH_FAIL,
   VIDEO_SEARCH_REQUEST,
   VIDEO_SEARCH_SUCCESS,
@@ -23,6 +26,11 @@ const initialStateVid = {
 };
 
 const initialRelatedVids = {
+  videos: [],
+  loading: false,
+};
+
+const initialSearchedVids = {
   videos: [],
   loading: false,
 };
@@ -58,18 +66,20 @@ export const selectedVideoReducer = (prevState = initialStateVid, action) => {
     case VIDEO_SEARCH_REQUEST:
       return {
         ...prevState,
-        loading: false,
+        loading: true,
       };
     case VIDEO_SEARCH_SUCCESS:
       return {
         ...prevState,
         video: payload,
+        loading: false,
       };
     case VIDEO_SEARCH_FAIL:
       return {
         ...prevState,
         video: {},
         error: payload,
+        loading: false,
       };
     default:
       return prevState;
@@ -101,5 +111,35 @@ export const relatedVidsReducer = (state = initialRelatedVids, action) => {
 
     default:
       return state;
+  }
+};
+
+export const searchedVideoReducer = (
+  prevState = initialSearchedVids,
+  action
+) => {
+  const { type, payload } = action;
+
+  switch (type) {
+    case SEARCHED_VIDEO_REQUEST:
+      return {
+        ...prevState,
+        loading: true,
+      };
+    case SEARCHED_VIDEO_SUCCESS:
+      return {
+        ...prevState,
+        videos: payload,
+        loading: false,
+      };
+    case SEARCHED_VIDEO_FAIL:
+      return {
+        ...prevState,
+        videos: {},
+        error: payload,
+        loading: false,
+      };
+    default:
+      return prevState;
   }
 };
