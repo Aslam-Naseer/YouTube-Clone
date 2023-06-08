@@ -42,6 +42,16 @@
   cursor: pointer;
 }
 
+.sub-button.subbed {
+  background-color: #272727;
+  color: white;
+}
+
+.sub-button.subbed:hover {
+  background-color: #444;
+
+}
+
 .like-dislike>button {
   padding: 8px 15px;
   border: none;

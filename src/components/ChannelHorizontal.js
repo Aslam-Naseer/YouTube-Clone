@@ -3,15 +3,18 @@ import { demoChannelTitle, demoChannelUrl } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { getChannelDetails } from "../redux/actions/channel.action";
 import numeral from "numeral";
-import { removeSubscription } from "../utils/firestore";
+import { addSubscription, removeSubscription } from "../utils/firestore";
 
 const ChannelHorizontal = ({ channel }) => {
   const dispatch = useDispatch();
+  const { channelIds } = useSelector((state) => state.subbedChannels);
   const subscribers = useSelector(
     (state) => state.channelDetails.channel?.statistics?.subscriberCount
   );
 
   const { id, snippet } = channel;
+
+  const isSubbed = () => channelIds.includes(id?.channelId);
 
   useEffect(() => {
     dispatch(getChannelDetails(id?.channelId));
@@ -36,10 +39,14 @@ const ChannelHorizontal = ({ channel }) => {
         <div>{snippet?.description}</div>
       </div>
       <button
-        className="sub-btn-channel-horizontal"
-        onClick={() => removeSubscription(id?.channelId)}
+        className={`sub-btn-channel-horizontal ${isSubbed() ? "subbed" : ""}`}
+        onClick={() => {
+          isSubbed()
+            ? removeSubscription(id?.channelId)
+            : addSubscription(id?.channelId);
+        }}
       >
-        Subscribe
+        {isSubbed() ? "Subscribed" : "Subscribe"}
       </button>
     </div>
   );

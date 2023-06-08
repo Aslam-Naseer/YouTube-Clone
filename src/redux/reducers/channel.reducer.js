@@ -2,6 +2,9 @@ import {
   CHANNEL_DETAILS_FAIL,
   CHANNEL_DETAILS_REQUEST,
   CHANNEL_DETAILS_SUCCESS,
+  SUBBED_CHANNELS_FAIL,
+  SUBBED_CHANNELS_REQUEST,
+  SUBBED_CHANNELS_SUCCESS,
 } from "../actionType";
 
 const inititalState = {
@@ -12,6 +15,7 @@ const inititalState = {
 const inititalSubbedState = {
   loading: false,
   channels: [],
+  channelIds: [],
 };
 
 export const channelDetailReducer = (state = inititalState, action) => {
@@ -45,21 +49,23 @@ export const subbedChannelsReducer = (state = inititalSubbedState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case CHANNEL_DETAILS_REQUEST:
+    case SUBBED_CHANNELS_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case CHANNEL_DETAILS_SUCCESS:
+    case SUBBED_CHANNELS_SUCCESS:
       return {
         ...state,
-        channels: payload,
+        channels: payload.channels,
+        channelIds: payload.channelIds,
         loading: false,
       };
-    case CHANNEL_DETAILS_FAIL:
+    case SUBBED_CHANNELS_FAIL:
       return {
         ...state,
         channels: [],
+        channelIds: [],
         loading: false,
         error: payload,
       };

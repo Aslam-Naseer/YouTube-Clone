@@ -17,9 +17,12 @@ import ReactShowMoreText from "react-show-more-text";
 import numeral from "numeral";
 import moment from "moment";
 import { getChannelDetails } from "../redux/actions/channel.action";
-import { addSubscription } from "../utils/firestore";
+import { addSubscription, removeSubscription } from "../utils/firestore";
 
 const Watchscreen = () => {
+  const { channelIds } = useSelector((state) => state.subbedChannels);
+  const isSubbed = () => channelIds.includes(snippet?.channelId);
+
   const { id } = useParams();
 
   const dispatch = useDispatch();
@@ -73,10 +76,14 @@ const Watchscreen = () => {
                 .toUpperCase()} subscribers`}</div>
             </div>
             <button
-              className="sub-button"
-              onClick={() => addSubscription(snippet?.channelId)}
+              className={`sub-button ${isSubbed() ? "subbed" : ""}`}
+              onClick={() => {
+                isSubbed()
+                  ? removeSubscription(snippet?.channelId)
+                  : addSubscription(snippet?.channelId);
+              }}
             >
-              Subscribe
+              {isSubbed() ? "Subscribed" : "Subscribe"}
             </button>
           </div>
 

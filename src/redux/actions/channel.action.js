@@ -29,21 +29,25 @@ export const getChannelDetails = (id) => async (dispatch) => {
 export const setSubbedChannels = () => async (dispatch) => {
   try {
     dispatch({ type: SUBBED_CHANNELS_REQUEST });
-    const channelIds = getSubscriptions();
+    const channelIds = await getSubscriptions();
+
     const subList = [];
-    await channelIds.forEach(async (channelId) => {
-      const { data } = await fetchData("/channels", {
-        params: {
-          part: "snippet,statistics,contentDetails",
-          id: channelId,
-        },
-      });
-      subList.push(data?.items[0]);
+    // await Promise.all(
+    //   channelIds.forEach(async (channelId) => {
+    //     const { data } = await fetchData("/channels", {
+    //       params: {
+    //         part: "snippet,statistics,contentDetails",
+    //         id: channelId,
+    //       },
+    //     });
+    //     subList.push(data?.items[0]);
+    //   })
+    // );
+
+    dispatch({
+      type: SUBBED_CHANNELS_SUCCESS,
+      payload: { channels: subList, channelIds },
     });
-
-    console.log(subList);
-
-    dispatch({ type: SUBBED_CHANNELS_SUCCESS, payload: subList });
   } catch (error) {
     console.error(error.message);
     dispatch({ type: SUBBED_CHANNELS_FAIL, payload: error.message });
