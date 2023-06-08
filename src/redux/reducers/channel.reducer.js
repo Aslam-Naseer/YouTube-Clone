@@ -9,6 +9,11 @@ const inititalState = {
   channel: {},
 };
 
+const inititalSubbedState = {
+  loading: false,
+  channels: [],
+};
+
 export const channelDetailReducer = (state = inititalState, action) => {
   const { payload, type } = action;
 
@@ -28,6 +33,33 @@ export const channelDetailReducer = (state = inititalState, action) => {
       return {
         ...state,
         channel: null,
+        loading: false,
+        error: payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const subbedChannelsReducer = (state = inititalSubbedState, action) => {
+  const { type, payload } = action;
+
+  switch (type) {
+    case CHANNEL_DETAILS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case CHANNEL_DETAILS_SUCCESS:
+      return {
+        ...state,
+        channels: payload,
+        loading: false,
+      };
+    case CHANNEL_DETAILS_FAIL:
+      return {
+        ...state,
+        channels: [],
         loading: false,
         error: payload,
       };

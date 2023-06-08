@@ -3,6 +3,7 @@ import { demoChannelTitle, demoChannelUrl } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { getChannelDetails } from "../redux/actions/channel.action";
 import numeral from "numeral";
+import { removeSubscription } from "../utils/firestore";
 
 const ChannelHorizontal = ({ channel }) => {
   const dispatch = useDispatch();
@@ -34,7 +35,12 @@ const ChannelHorizontal = ({ channel }) => {
         </div>
         <div>{snippet?.description}</div>
       </div>
-      <button className="sub-btn-channel-horizontal">Subscribe</button>
+      <button
+        className="sub-btn-channel-horizontal"
+        onClick={() => removeSubscription(id?.channelId)}
+      >
+        Subscribe
+      </button>
     </div>
   );
 };

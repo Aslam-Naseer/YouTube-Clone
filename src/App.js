@@ -7,6 +7,7 @@ import Sidebar from "./components/Sidebar";
 import { useSelector } from "react-redux";
 import Watchscreen from "./screens/Watchscreen";
 import Searchscreen from "./screens/Searchscreen";
+import Subscriptions from "./screens/Subscriptions";
 
 const Layout = ({ children }) => (
   <>
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/" element={<Homescreen />} />
         <Route path="/watch/:id" element={<Watchscreen />} />
         <Route path="/search/:query" element={<Searchscreen />} />
+        <Route path="/subscriptions" element={<Subscriptions />} />
       </Routes>
     </Layout>
   );

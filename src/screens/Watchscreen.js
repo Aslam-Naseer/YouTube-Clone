@@ -17,6 +17,7 @@ import ReactShowMoreText from "react-show-more-text";
 import numeral from "numeral";
 import moment from "moment";
 import { getChannelDetails } from "../redux/actions/channel.action";
+import { addSubscription } from "../utils/firestore";
 
 const Watchscreen = () => {
   const { id } = useParams();
@@ -71,7 +72,12 @@ const Watchscreen = () => {
                 .format("0.a")
                 .toUpperCase()} subscribers`}</div>
             </div>
-            <button className="sub-button">Subscribe</button>
+            <button
+              className="sub-button"
+              onClick={() => addSubscription(snippet?.channelId)}
+            >
+              Subscribe
+            </button>
           </div>
 
           <div className="like-dislike">

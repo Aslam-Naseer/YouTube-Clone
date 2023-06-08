@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 
 import "./firebase";
+import "./utils/firestore";
+
 import App from "./App";
 import store from "./redux/store";
 
