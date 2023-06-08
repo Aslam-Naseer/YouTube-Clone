@@ -26,7 +26,7 @@ export const getChannelDetails = (id) => async (dispatch) => {
   }
 };
 
-export const getSubbedChannels = () => async (dispatch) => {
+export const setSubbedChannels = () => async (dispatch) => {
   try {
     dispatch({ type: SUBBED_CHANNELS_REQUEST });
     const channelIds = getSubscriptions();

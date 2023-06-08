@@ -6,21 +6,28 @@ import {
   doc,
   setDoc,
   getDoc,
+  onSnapshot,
 } from "firebase/firestore";
 
 const subsCollection = collection(getFirestore(), "subscriptions");
 const uid = () => (getAuth().currentUser ? getAuth().currentUser.uid : null);
 
 let docObj = null;
-onAuthStateChanged(
-  getAuth(),
-  () => (docObj = uid() ? doc(subsCollection, uid()) : null)
-);
+let docRef = null;
+
+onAuthStateChanged(getAuth(), async () => {
+  docObj = uid() ? doc(subsCollection, uid()) : null;
+  console.log("auth change: " + uid());
+});
+
+onSnapshot(subsCollection, async (data) => {
+  docRef = uid() ? await getDoc(docObj) : null;
+  const changes = data.docChanges();
+  console.log(changes[0].doc.data()?.subList);
+});
 
 export const getSubscriptions = async () => {
-  const docRef = await getDoc(docObj);
-  console.log(docRef.data());
-  const subList = [...docRef.data().subList];
+  const subList = docRef.data() ? [...docRef.data()?.subList] : [];
   return subList;
 };
 
@@ -37,6 +44,10 @@ export const addSubscription = async (id) => {
 
 export const removeSubscription = async (id) => {
   const initSubList = await getSubscriptions();
-  const subList = initSubList.filter((subId) => subId !== id);
-  saveSubscription(subList);
+  if (initSubList.includes(id)) {
+    const subList = initSubList.filter((subId) => subId !== id);
+    saveSubscription(subList);
+  } else {
+    console.log("Meh");
+  }
 };
