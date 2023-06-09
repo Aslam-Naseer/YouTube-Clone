@@ -34,8 +34,6 @@ export const setSubbedChannels = () => async (dispatch) => {
     dispatch({ type: SUBBED_CHANNELS_REQUEST });
     const channelIds = await getSubscriptions();
 
-    console.log(channelIds);
-
     const subList = await Promise.all(
       channelIds.map(async (channelId) => {
         const { data } = await fetchData("/channels", {
@@ -81,7 +79,6 @@ export const getChannelVideos = (id) => async (dispatch) => {
         maxResults: 10,
       },
     });
-    console.log(data);
     dispatch({ type: CHANNEL_VIDEOS_SUCCESS, payload: data.items });
   } catch (error) {
     console.error(error);

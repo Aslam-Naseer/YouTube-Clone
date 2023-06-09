@@ -19,10 +19,7 @@ const ChannelHorizontal = ({ channel }) => {
   const channelId = id?.channelId ? id.channelId : id;
   const isSubbed = () => channelIds.includes(channelId);
 
-  console.log(subFromSelector);
-
   useEffect(() => {
-    console.log(channel);
     if (channel.statistics)
       setSubscribers(channel?.statistics?.subscriberCount);
     else dispatch(getChannelDetails(channelId));

@@ -50,8 +50,8 @@ export const Video = ({ video, channelVid }) => {
         setDuration(items.items[0].contentDetails.duration);
         setViews(items.items[0].statistics.viewCount);
       } else {
-        setDuration(items[0].contentDetails.duration);
-        setViews(items[0].statistics.viewCount);
+        setDuration(items.items[0].contentDetails.duration);
+        setViews(items.items[0].statistics.viewCount);
       }
     };
     getVideoDetails();

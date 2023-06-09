@@ -12,7 +12,7 @@ const Channelscreen = () => {
   const dispatch = useDispatch();
   const { videos } = useSelector((state) => state.channelVideos);
 
-  const [imgurl, setImgurl] = useState(demoProfilePicture);
+  const [imgurl, setImgurl] = useState(null);
   const [channelObj, setChannelObj] = useState({});
 
   useEffect(() => {
@@ -25,8 +25,8 @@ const Channelscreen = () => {
           id: channelId,
         },
       });
-      console.log(data);
-      setImgurl(data.items[0].brandingSettings.image.bannerExternalUrl);
+
+      setImgurl(data.items[0].brandingSettings?.image?.bannerExternalUrl);
       setChannelObj(data.items[0]);
     };
 
@@ -39,7 +39,9 @@ const Channelscreen = () => {
 
   return (
     <div className="channel-screen">
-      <img src={imgurl} alt="banner" className="channel-banner" />
+      {imgurl ? (
+        <img src={imgurl} alt="banner" className="channel-banner" />
+      ) : null}
       <ChannelHorizontal channel={channelObj} />
       <div className="uploads">Uploads</div>
       <div className="vid-grid">

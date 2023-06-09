@@ -81,7 +81,7 @@ export const getSelectedVideo = (id) => async (dispatch) => {
     });
     dispatch({ type: VIDEO_SEARCH_SUCCESS, payload: data.items[0] });
   } catch (e) {
-    console.log(e.message);
+    console.error(e.message);
     dispatch({
       type: VIDEO_SEARCH_FAIL,
       payload: e.message,

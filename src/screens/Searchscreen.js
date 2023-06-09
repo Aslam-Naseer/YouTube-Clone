@@ -14,7 +14,6 @@ const Searchscreen = () => {
     dispatch(getSearchedVideos(query));
   }, [query, dispatch]);
 
-  console.log(searchVids);
   return (
     <div className="search-screen-div">
       {searchVids.map((vid) =>
