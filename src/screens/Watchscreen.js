@@ -6,7 +6,7 @@ import {
   demoVideoTitle,
 } from "../utils/constants";
 import { MdThumbUpOffAlt, MdThumbDownOffAlt } from "react-icons/md";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getRelatedVideos,
@@ -58,23 +58,28 @@ const Watchscreen = () => {
 
         <div className="main-details">
           <div className="channel-details">
-            <img
-              src={
-                channelDetails?.snippet?.thumbnails?.high?.url ||
-                demoProfilePicture
-              }
-              alt="channel profile pic"
-            />
-            <div>
-              <div style={{ fontWeight: 500, fontSize: 16, color: "white" }}>
-                {channelDetails?.snippet?.title || demoChannelTitle}
+            <Link to={`/channel/${snippet?.channelId}`}>
+              <img
+                src={
+                  channelDetails?.snippet?.thumbnails?.high?.url ||
+                  demoProfilePicture
+                }
+                alt="channel profile pic"
+              />
+            </Link>
+            <Link to={`/channel/${snippet?.channelId}`}>
+              <div>
+                <div style={{ fontWeight: 500, fontSize: 16, color: "white" }}>
+                  {channelDetails?.snippet?.title || demoChannelTitle}
+                </div>
+                <div style={{ fontSize: 12 }}>{`${numeral(
+                  channelDetails?.statistics?.subscriberCount
+                )
+                  .format("0.a")
+                  .toUpperCase()} subscribers`}</div>
               </div>
-              <div style={{ fontSize: 12 }}>{`${numeral(
-                channelDetails?.statistics?.subscriberCount
-              )
-                .format("0.a")
-                .toUpperCase()} subscribers`}</div>
-            </div>
+            </Link>
+
             <button
               className={`sub-button ${isSubbed() ? "subbed" : ""}`}
               onClick={() => {

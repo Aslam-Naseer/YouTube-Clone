@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getChannelDetails } from "../redux/actions/channel.action";
 import numeral from "numeral";
 import { addSubscription, removeSubscription } from "../utils/firestore";
+import { Link } from "react-router-dom";
 
 const ChannelHorizontal = ({ channel }) => {
   const dispatch = useDispatch();
@@ -29,17 +30,21 @@ const ChannelHorizontal = ({ channel }) => {
 
   return (
     <div className="channel-div-horizontal">
-      <div className="img-container">
-        <img
-          src={snippet?.thumbnails?.high?.url || demoChannelUrl}
-          alt="profile=pfp"
-          className="channel-horizontal-img"
-        />
-      </div>
-      <div className="channel-horizontal-details">
-        <div className="channel-horizontal-title">
-          {snippet?.title || demoChannelTitle}
+      <Link to={`/channel/${channelId}`}>
+        <div className="img-container">
+          <img
+            src={snippet?.thumbnails?.high?.url || demoChannelUrl}
+            alt="profile=pfp"
+            className="channel-horizontal-img"
+          />
         </div>
+      </Link>
+      <div className="channel-horizontal-details">
+        <Link to={`/channel/${channelId}`}>
+          <div className="channel-horizontal-title">
+            {snippet?.title || demoChannelTitle}
+          </div>
+        </Link>
         <div>
           {numeral(subscribers || subFromSelector)
             .format("0.a")

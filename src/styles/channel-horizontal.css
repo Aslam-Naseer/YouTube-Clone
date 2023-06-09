@@ -19,11 +19,11 @@
   align-items: center;
 }
 
-.subscriptions-div>.channel-div-horizontal>.img-container {
+.subscriptions-div>.channel-div-horizontal .img-container {
   width: 300px
 }
 
-.channel-div-horizontal>.img-container {
+.channel-div-horizontal .img-container {
   display: flex;
   justify-content: center;
   width: 370px;
@@ -40,7 +40,7 @@
   margin-bottom: 10px;
 }
 
-.channel-horizontal-details>.channel-horizontal-title {
+.channel-horizontal-details .channel-horizontal-title {
   font-size: 18px;
   color: white;
   margin-bottom: 15px;

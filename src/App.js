@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import Watchscreen from "./screens/Watchscreen";
 import Searchscreen from "./screens/Searchscreen";
 import Subscriptions from "./screens/Subscriptions";
+import Channelscreen from "./screens/Channelscreen";
 
 const Layout = ({ children }) => (
   <>
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/watch/:id" element={<Watchscreen />} />
         <Route path="/search/:query" element={<Searchscreen />} />
         <Route path="/subscriptions" element={<Subscriptions />} />
+        <Route path="/channel/:channelId" element={<Channelscreen />} />
       </Routes>
     </Layout>
   );

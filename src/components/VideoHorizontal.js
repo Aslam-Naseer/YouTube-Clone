@@ -69,16 +69,19 @@ export const VideoHorizontal = ({ video, searchScreen }) => {
             {snippet?.title || demoVideoTitle}
           </div>
         </Link>
-        <div className="channel-horizontal">
-          {searchScreen ? (
-            <img
-              src={channelIcon || demoProfilePicture}
-              alt="channel-pfp"
-              className="channel-pfp-horizontal"
-            />
-          ) : null}
-          {snippet?.channelTitle || demoChannelTitle}
-        </div>
+        <Link to={`/channel/${snippet?.channelId}`}>
+          <div className="channel-horizontal">
+            {searchScreen ? (
+              <img
+                src={channelIcon || demoProfilePicture}
+                alt="channel-pfp"
+                className="channel-pfp-horizontal"
+              />
+            ) : null}
+            {snippet?.channelTitle || demoChannelTitle}
+          </div>
+        </Link>
+
         <div className="views-publish-horizontal">
           <span>{numeral(views).format("0.a").toUpperCase()} views</span>{" "}
           &#x2022; <span>{moment(snippet?.publishedAt).fromNow(false)}</span>

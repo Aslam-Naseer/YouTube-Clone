@@ -15,23 +15,21 @@ const Searchscreen = () => {
   }, [query, dispatch]);
 
   console.log(searchVids);
-  if (searchVids?.id)
-    return (
-      <div className="search-screen-div">
-        {searchVids.map((vid) =>
-          vid?.id?.videoId ? (
-            <VideoHorizontal
-              video={vid}
-              searchScreen
-              key={vid?.id?.videoId + "h"}
-            />
-          ) : (
-            <ChannelHorizontal channel={vid} key={vid?.id?.channelId + "h"} />
-          )
-        )}
-      </div>
-    );
-  else return <div>Loading...</div>;
+  return (
+    <div className="search-screen-div">
+      {searchVids.map((vid) =>
+        vid?.id?.videoId ? (
+          <VideoHorizontal
+            video={vid}
+            searchScreen
+            key={vid?.id?.videoId + "h"}
+          />
+        ) : (
+          <ChannelHorizontal channel={vid} key={vid?.id?.channelId + "h"} />
+        )
+      )}
+    </div>
+  );
 };
 
 export default Searchscreen;
