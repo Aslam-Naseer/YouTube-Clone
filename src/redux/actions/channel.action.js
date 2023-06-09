@@ -31,18 +31,22 @@ export const setSubbedChannels = () => async (dispatch) => {
     dispatch({ type: SUBBED_CHANNELS_REQUEST });
     const channelIds = await getSubscriptions();
 
-    const subList = [];
-    // await Promise.all(
-    //   channelIds.forEach(async (channelId) => {
-    //     const { data } = await fetchData("/channels", {
-    //       params: {
-    //         part: "snippet,statistics,contentDetails",
-    //         id: channelId,
-    //       },
-    //     });
-    //     subList.push(data?.items[0]);
-    //   })
-    // );
+    console.log(channelIds);
+
+    const subList = await Promise.all(
+      channelIds.map(async (channelId) => {
+        const { data } = await fetchData("/channels", {
+          params: {
+            part: "snippet,statistics,contentDetails",
+            id: channelId,
+          },
+        });
+
+        return data?.items[0];
+      })
+    );
+
+    console.log({ subList });
 
     dispatch({
       type: SUBBED_CHANNELS_SUCCESS,
@@ -53,3 +57,10 @@ export const setSubbedChannels = () => async (dispatch) => {
     dispatch({ type: SUBBED_CHANNELS_FAIL, payload: error.message });
   }
 };
+
+// const { data } = fetchData("/channels", {
+//   params: {
+//     part: "snippet,statistics,contentDetails",
+//     id: channelId,
+//   },
+// });

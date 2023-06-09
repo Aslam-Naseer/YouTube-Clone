@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { demoChannelTitle, demoChannelUrl } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { getChannelDetails } from "../redux/actions/channel.action";
@@ -8,17 +8,25 @@ import { addSubscription, removeSubscription } from "../utils/firestore";
 const ChannelHorizontal = ({ channel }) => {
   const dispatch = useDispatch();
   const { channelIds } = useSelector((state) => state.subbedChannels);
-  const subscribers = useSelector(
+
+  const [subscribers, setSubscribers] = useState(0);
+  const subFromSelector = useSelector(
     (state) => state.channelDetails.channel?.statistics?.subscriberCount
   );
 
   const { id, snippet } = channel;
+  const channelId = id.channelId ? id.channelId : id;
+  const isSubbed = () => channelIds.includes(channelId);
 
-  const isSubbed = () => channelIds.includes(id?.channelId);
+  console.log(subFromSelector);
 
   useEffect(() => {
-    dispatch(getChannelDetails(id?.channelId));
-  }, [id, dispatch]);
+    console.log(channel);
+    if (channel.statistics)
+      setSubscribers(channel?.statistics?.subscriberCount);
+    else dispatch(getChannelDetails(channelId));
+  }, [channel, channelId, dispatch]);
+
   return (
     <div className="channel-div-horizontal">
       <div className="img-container">
@@ -33,8 +41,10 @@ const ChannelHorizontal = ({ channel }) => {
           {snippet?.title || demoChannelTitle}
         </div>
         <div>
-          {" "}
-          {numeral(subscribers).format("0.a").toUpperCase()} {" Subscribers"}
+          {numeral(subscribers || subFromSelector)
+            .format("0.a")
+            .toUpperCase()}{" "}
+          {" Subscribers"}
         </div>
         <div>{snippet?.description}</div>
       </div>
@@ -42,8 +52,8 @@ const ChannelHorizontal = ({ channel }) => {
         className={`sub-btn-channel-horizontal ${isSubbed() ? "subbed" : ""}`}
         onClick={() => {
           isSubbed()
-            ? removeSubscription(id?.channelId)
-            : addSubscription(id?.channelId);
+            ? removeSubscription(channelId)
+            : addSubscription(channelId);
         }}
       >
         {isSubbed() ? "Subscribed" : "Subscribe"}

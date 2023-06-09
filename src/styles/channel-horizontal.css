@@ -10,6 +10,19 @@
   align-items: center;
 }
 
+.subscriptions-div>.channel-div-horizontal {
+  display: grid;
+  grid-template-columns: auto 5fr 2fr;
+  gap: 25px;
+  padding: 25px 0;
+  margin-bottom: 40px;
+  align-items: center;
+}
+
+.subscriptions-div>.channel-div-horizontal>.img-container {
+  width: 300px
+}
+
 .channel-div-horizontal>.img-container {
   display: flex;
   justify-content: center;
