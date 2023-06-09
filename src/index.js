@@ -18,6 +18,7 @@ import "./styles/watchscreen.css";
 import "./styles/vid-horizontal.css";
 import "./styles/searchscreen.css";
 import "./styles/channel-horizontal.css";
+import "./styles/channelscreen.css";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Loginscreen from "./screens/Loginscreen";

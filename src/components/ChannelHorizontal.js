@@ -16,7 +16,7 @@ const ChannelHorizontal = ({ channel }) => {
   );
 
   const { id, snippet } = channel;
-  const channelId = id.channelId ? id.channelId : id;
+  const channelId = id?.channelId ? id.channelId : id;
   const isSubbed = () => channelIds.includes(channelId);
 
   console.log(subFromSelector);
@@ -51,7 +51,7 @@ const ChannelHorizontal = ({ channel }) => {
             .toUpperCase()}{" "}
           {" Subscribers"}
         </div>
-        <div>{snippet?.description}</div>
+        <div className="channel-description">{snippet?.description}</div>
       </div>
       <button
         className={`sub-btn-channel-horizontal ${isSubbed() ? "subbed" : ""}`}

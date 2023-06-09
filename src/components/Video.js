@@ -12,7 +12,7 @@ import moment from "moment";
 import numeral from "numeral";
 import { Link } from "react-router-dom";
 
-export const Video = ({ video }) => {
+export const Video = ({ video, channelVid }) => {
   const [views, setViews] = useState(0);
   const [duration, setDuration] = useState(0);
   const [channelIcon, setChannelIcon] = useState(null);
@@ -35,23 +35,27 @@ export const Video = ({ video }) => {
 
   const vidPublished = moment(publishedAt).fromNow(false);
 
-  const vidId = id?.videoId || id;
+  const vidId = channelVid ? video?.contentDetails?.videoId : id?.videoId || id;
 
   useEffect(() => {
     const getVideoDetails = async () => {
-      const {
-        data: { items },
-      } = await fetchData("/videos", {
+      const { data: items } = await fetchData("/videos", {
         params: {
           part: "contentDetails,statistics",
           id: vidId,
         },
       });
-      setDuration(items[0].contentDetails.duration);
-      setViews(items[0].statistics.viewCount);
+
+      if (channelVid) {
+        setDuration(items.items[0].contentDetails.duration);
+        setViews(items.items[0].statistics.viewCount);
+      } else {
+        setDuration(items[0].contentDetails.duration);
+        setViews(items[0].statistics.viewCount);
+      }
     };
     getVideoDetails();
-  }, [vidId]);
+  }, [vidId, channelVid]);
 
   useEffect(() => {
     const getChannelIcon = async () => {

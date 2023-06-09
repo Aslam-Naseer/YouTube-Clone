@@ -4,6 +4,9 @@ import {
   CHANNEL_DETAILS_FAIL,
   CHANNEL_DETAILS_REQUEST,
   CHANNEL_DETAILS_SUCCESS,
+  CHANNEL_VIDEOS_FAIL,
+  CHANNEL_VIDEOS_REQUEST,
+  CHANNEL_VIDEOS_SUCCESS,
   SUBBED_CHANNELS_FAIL,
   SUBBED_CHANNELS_REQUEST,
   SUBBED_CHANNELS_SUCCESS,
@@ -46,8 +49,6 @@ export const setSubbedChannels = () => async (dispatch) => {
       })
     );
 
-    console.log({ subList });
-
     dispatch({
       type: SUBBED_CHANNELS_SUCCESS,
       payload: { channels: subList, channelIds },
@@ -58,9 +59,32 @@ export const setSubbedChannels = () => async (dispatch) => {
   }
 };
 
-// const { data } = fetchData("/channels", {
-//   params: {
-//     part: "snippet,statistics,contentDetails",
-//     id: channelId,
-//   },
-// });
+export const getChannelVideos = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: CHANNEL_VIDEOS_REQUEST });
+
+    const {
+      data: { items },
+    } = await fetchData("/channels", {
+      params: {
+        part: "contentDetails",
+        id: id,
+      },
+    });
+
+    const uploadPlaylistId = items[0].contentDetails.relatedPlaylists.uploads;
+
+    const { data } = await fetchData("/playlistItems", {
+      params: {
+        part: "snippet,contentDetails",
+        playlistId: uploadPlaylistId,
+        maxResults: 10,
+      },
+    });
+    console.log(data);
+    dispatch({ type: CHANNEL_VIDEOS_SUCCESS, payload: data.items });
+  } catch (error) {
+    console.error(error);
+    dispatch({ type: CHANNEL_VIDEOS_FAIL, payload: error.message });
+  }
+};
