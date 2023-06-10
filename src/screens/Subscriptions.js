@@ -9,9 +9,23 @@ const Subscriptions = () => {
 
   return (
     <div className="subscriptions-div">
-      {channels.map((channel) => (
-        <ChannelHorizontal channel={channel} key={channel?.id + "sub"} />
-      ))}
+      {!channels || channels?.length === 0 ? (
+        <h2
+          style={{
+            color: "#fff",
+            fontWeight: 500,
+            display: "flex",
+            width: "85vw",
+            justifyContent: "center",
+          }}
+        >
+          You are not Subscribed to anybody
+        </h2>
+      ) : (
+        channels.map((channel) => (
+          <ChannelHorizontal channel={channel} key={channel?.id + "sub"} />
+        ))
+      )}
     </div>
   );
 };

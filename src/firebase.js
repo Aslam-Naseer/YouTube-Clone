@@ -15,6 +15,7 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 
 onAuthStateChanged(getAuth(), (user) => {
-  if (user) store.dispatch(login(user));
-  else store.dispatch(logout());
+  if (user) {
+    store.dispatch(login(user));
+  } else store.dispatch(logout());
 });
