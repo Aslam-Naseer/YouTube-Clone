@@ -22,20 +22,26 @@ const Homescreen = () => {
     else dispatch(getCategoryVideos(category));
   };
 
+  console.log(vidsData);
+
   return (
     <div>
       <CategoriesBar />
-      <InfiniteScroll
-        dataLength={vidsData.length}
-        next={fetchMore}
-        hasMore={true}
-      >
-        <div className="vid-grid">
-          {vidsData.map((vid) => (
-            <Video video={vid} key={vid.id?.videoId || vid.id} />
-          ))}
-        </div>
-      </InfiniteScroll>
+      {vidsData.length === 0 ? (
+        <h2 className="error-text">Error Loading videos</h2>
+      ) : (
+        <InfiniteScroll
+          dataLength={vidsData.length}
+          next={fetchMore}
+          hasMore={true}
+        >
+          <div className="vid-grid">
+            {vidsData.map((vid) => (
+              <Video video={vid} key={vid.id?.videoId || vid.id} />
+            ))}
+          </div>
+        </InfiniteScroll>
+      )}
     </div>
   );
 };

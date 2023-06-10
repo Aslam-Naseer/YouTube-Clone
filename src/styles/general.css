@@ -44,3 +44,11 @@ a {
   text-decoration: none;
   color: currentColor;
 }
+
+.error-text {
+  color: #fff;
+  font-weight: 500;
+  display: flex;
+  width: 85vw;
+  justify-content: center;
+}
