@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MdExitToApp } from "react-icons/md";
-import { explore, home, library, subscriptions } from "../icons";
-import { Link } from "react-router-dom";
+import {
+  explore,
+  home,
+  homeSelected,
+  library,
+  subsSelected,
+  subscriptions,
+} from "../icons";
+import { Link, useLocation } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 
 const Sidebar = () => {
+  const [selected, setSelected] = useState("home");
+
+  const location = useLocation();
+
   const handler = async () => {
     try {
       await signOut(getAuth());
@@ -13,11 +24,17 @@ const Sidebar = () => {
     }
   };
 
+  useEffect(() => {
+    if (location.pathname === "/") setSelected("home");
+    else if (location.pathname === "/subscriptions") setSelected("subs");
+    else setSelected(null);
+  }, [location.pathname]);
+
   return (
     <nav className="sidebar">
       <Link to="/">
         <button className="SB">
-          <img src={home} alt="home" />
+          <img src={selected === "home" ? homeSelected : home} alt="home" />
           <div>Home</div>
         </button>
       </Link>
@@ -27,7 +44,10 @@ const Sidebar = () => {
       </button>
       <Link to="/subscriptions">
         <button className="SB">
-          <img src={subscriptions} alt="subscriptons" />
+          <img
+            src={selected === "subs" ? subsSelected : subscriptions}
+            alt="subscriptons"
+          />
           <div>Subscriptions</div>
         </button>
       </Link>

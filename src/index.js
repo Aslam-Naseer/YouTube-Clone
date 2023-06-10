@@ -28,7 +28,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/auth" element={<Loginscreen />}></Route>
-        <Route path="*" element={<App />} />
+        <Route path="/*" element={<App />} />
       </Routes>
     </BrowserRouter>
   </Provider>,
