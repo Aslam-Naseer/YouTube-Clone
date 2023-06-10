@@ -1,14 +1,16 @@
 import React from "react";
 import { MdExitToApp } from "react-icons/md";
 import { explore, home, library, subscriptions } from "../icons";
-import { useDispatch } from "react-redux";
-import { logout } from "../redux/actions/auth.action";
 import { Link } from "react-router-dom";
+import { getAuth, signOut } from "firebase/auth";
 
 const Sidebar = () => {
-  const dispatch = useDispatch();
-  const handler = () => {
-    dispatch(logout());
+  const handler = async () => {
+    try {
+      await signOut(getAuth());
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (

@@ -22,7 +22,7 @@ const Layout = ({ children }) => (
 
 const App = () => {
   const navigate = useNavigate();
-  const authStatus = useSelector((state) => state.auth.accessToken);
+  const authStatus = useSelector((state) => state.auth.user);
 
   useEffect(() => {
     if (!authStatus) navigate("/auth");

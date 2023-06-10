@@ -2,18 +2,23 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/actions/auth.action";
 import { useNavigate } from "react-router-dom";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
 const Loginscreen = () => {
-  const dispatch = useDispatch();
-
   const navigate = useNavigate();
-  const authStatus = useSelector((state) => state.auth.accessToken);
+  const authStatus = useSelector((state) => state.auth.user);
   useEffect(() => {
     if (authStatus) navigate("/");
   }, [authStatus, navigate]);
 
-  const handler = () => {
-    dispatch(login());
+  const handler = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(getAuth(), provider);
+    } catch (error) {
+      alert("Login failed!");
+      console.error(error);
+    }
   };
 
   return (

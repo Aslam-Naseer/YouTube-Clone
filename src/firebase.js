@@ -1,4 +1,7 @@
 import { initializeApp } from "firebase/app";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import store from "./redux/store";
+import { login, logout } from "./redux/actions/auth.action";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBGD0GYthA9H494eiyHGANicjS3jYUP0s0",
@@ -10,3 +13,8 @@ const firebaseConfig = {
 };
 
 initializeApp(firebaseConfig);
+
+onAuthStateChanged(getAuth(), (user) => {
+  if (user) store.dispatch(login(user));
+  else store.dispatch(logout());
+});

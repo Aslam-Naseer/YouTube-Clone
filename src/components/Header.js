@@ -9,10 +9,14 @@ import {
   notifications,
 } from "../icons";
 import { Link, useNavigate } from "react-router-dom";
+import { demoProfilePicture } from "../utils/constants";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
+
+  const pfp = useSelector((state) => state.auth?.user?.photoURL);
 
   const searchQuery = (e) => {
     e.preventDefault();
@@ -66,11 +70,7 @@ const Header = () => {
           <div className="notif-count">3</div>
           <div className="toolkit">Notifications</div>
         </div>
-        <img
-          src="https://img.freepik.com/free-icon/user_318-749758.jpg"
-          className="my-pfp"
-          alt="pfp"
-        />
+        <img src={pfp || demoProfilePicture} className="my-pfp" alt="pfp" />
       </div>
     </header>
   );
