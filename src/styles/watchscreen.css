@@ -106,3 +106,25 @@
 .description {
   font-size: 14px;
 }
+
+
+@media (max-width: 1200px) {
+  .watch-screen {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .recommendations {
+    margin: 30px 20px;
+  }
+
+  .watch-section {
+    margin: 0 20px;
+  }
+}
+
+@media (max-width: 550px) {
+  .like-dislike>button {
+    visibility: hidden;
+  }
+}
