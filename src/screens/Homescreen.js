@@ -8,6 +8,8 @@ import {
 } from "../redux/actions/videos.action";
 import InfiniteScroll from "react-infinite-scroll-component";
 
+import "../styles/vid-grid.css";
+
 const Homescreen = () => {
   const vidsData = useSelector((state) => state.homeVids.videos);
   const category = useSelector((state) => state.homeVids.category);

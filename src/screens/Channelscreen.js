@@ -6,6 +6,8 @@ import { Video } from "../components/Video";
 import ChannelHorizontal from "../components/ChannelHorizontal";
 import fetchData from "../fetchData";
 
+import "../styles/channelscreen.css";
+
 const Channelscreen = () => {
   const { channelId } = useParams();
   const dispatch = useDispatch();

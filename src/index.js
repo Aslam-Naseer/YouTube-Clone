@@ -9,16 +9,6 @@ import App from "./App";
 import store from "./redux/store";
 
 import "./styles/general.css";
-import "./styles/header.css";
-import "./styles/sidebar.css";
-import "./styles/category-bar.css";
-import "./styles/vid-grid.css";
-import "./styles/login-screen.css";
-import "./styles/watchscreen.css";
-import "./styles/vid-horizontal.css";
-import "./styles/searchscreen.css";
-import "./styles/channel-horizontal.css";
-import "./styles/channelscreen.css";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Loginscreen from "./screens/Loginscreen";

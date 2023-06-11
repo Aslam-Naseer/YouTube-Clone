@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
+import "../styles/login-screen.css";
+
 const Loginscreen = () => {
   const navigate = useNavigate();
   const authStatus = useSelector((state) => state.auth.user);

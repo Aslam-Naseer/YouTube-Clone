@@ -19,6 +19,8 @@ import moment from "moment";
 import { getChannelDetails } from "../redux/actions/channel.action";
 import { addSubscription, removeSubscription } from "../utils/firestore";
 
+import "../styles/watchscreen.css";
+
 const Watchscreen = () => {
   const { channelIds } = useSelector((state) => state.subbedChannels);
   const isSubbed = () => channelIds.includes(snippet?.channelId);

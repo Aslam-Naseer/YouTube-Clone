@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSearchedVideos } from "../redux/actions/videos.action";
 import ChannelHorizontal from "../components/ChannelHorizontal";
 
+import "../styles/searchscreen.css";
+
 const Searchscreen = () => {
   const { query } = useParams();
   const dispatch = useDispatch();

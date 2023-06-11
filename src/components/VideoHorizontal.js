@@ -11,6 +11,8 @@ import fetchData from "../fetchData";
 import moment from "moment";
 import numeral from "numeral";
 
+import "../styles/vid-horizontal.css";
+
 export const VideoHorizontal = ({ video, searchScreen }) => {
   const { id, snippet } = video;
 

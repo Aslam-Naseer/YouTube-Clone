@@ -6,6 +6,8 @@ import numeral from "numeral";
 import { addSubscription, removeSubscription } from "../utils/firestore";
 import { Link } from "react-router-dom";
 
+import "../styles/channel-horizontal.css";
+
 const ChannelHorizontal = ({ channel }) => {
   const dispatch = useDispatch();
   const { channelIds } = useSelector((state) => state.subbedChannels);

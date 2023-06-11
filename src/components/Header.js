@@ -12,6 +12,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { demoProfilePicture } from "../utils/constants";
 import { useSelector } from "react-redux";
 
+import "../styles/header.css";
+
 const Header = ({ toggleSidebar }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();

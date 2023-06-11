@@ -11,6 +11,8 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 
+import "../styles/sidebar.css";
+
 const Sidebar = ({ show }) => {
   const [selected, setSelected] = useState("home");
 

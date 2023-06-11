@@ -6,6 +6,8 @@ import {
 } from "../redux/actions/videos.action";
 import { useDispatch } from "react-redux";
 
+import "../styles/category-bar.css";
+
 const CategoriesBar = () => {
   const [selected, setSelected] = useState("All");
   const dispatch = useDispatch();
