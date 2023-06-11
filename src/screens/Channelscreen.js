@@ -5,7 +5,6 @@ import { getChannelVideos } from "../redux/actions/channel.action";
 import { Video } from "../components/Video";
 import ChannelHorizontal from "../components/ChannelHorizontal";
 import fetchData from "../fetchData";
-import { demoProfilePicture } from "../utils/constants";
 
 const Channelscreen = () => {
   const { channelId } = useParams();

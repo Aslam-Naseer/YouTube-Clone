@@ -22,8 +22,6 @@ const Homescreen = () => {
     else dispatch(getCategoryVideos(category));
   };
 
-  console.log(vidsData);
-
   return (
     <div>
       <CategoriesBar />

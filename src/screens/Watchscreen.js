@@ -135,11 +135,6 @@ const Watchscreen = () => {
         {vidsData.map((vid) => (
           <VideoHorizontal video={vid} key={vid.id.videoId} />
         ))}
-        {/* {Array(10)
-          .fill({})
-          .map((vid, index) => (
-            <VideoHorizontal video={vid} key={index} />
-          ))} */}
       </div>
     </div>
   );

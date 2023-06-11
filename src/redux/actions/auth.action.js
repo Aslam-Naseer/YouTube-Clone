@@ -1,4 +1,3 @@
-import { getAuth } from "firebase/auth";
 import {
   LOGIN_FAIL,
   LOGIN_REQUEST,
