@@ -45,3 +45,10 @@
   background-color: var(--category-hover);
   cursor: pointer;
 }
+
+
+@media (max-width: 800px) {
+  .subheader {
+    left: 30px;
+  }
+}

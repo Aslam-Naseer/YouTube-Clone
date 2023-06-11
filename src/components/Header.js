@@ -12,7 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { demoProfilePicture } from "../utils/constants";
 import { useSelector } from "react-redux";
 
-const Header = () => {
+const Header = ({ toggleSidebar }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
@@ -26,7 +26,12 @@ const Header = () => {
   return (
     <header className="header">
       <div className="left-section">
-        <img src={hamburgerMenu} className="hamburger-menu" alt="menu" />
+        <img
+          src={hamburgerMenu}
+          className="hamburger-menu"
+          alt="menu"
+          onClick={toggleSidebar}
+        />
         <Link to="/">
           <img
             src={youtubeLogo}

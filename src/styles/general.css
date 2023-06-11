@@ -13,7 +13,8 @@ body {
   font-family: roboto, Arial;
   padding: 100px 30px 70px 100px;
   background-color: var(--black-primary);
-  color: var(--text-color)
+  color: var(--text-color);
+  transition: padding 110ms ease-out;
 }
 
 
@@ -51,4 +52,10 @@ a {
   display: flex;
   width: 85vw;
   justify-content: center;
+}
+
+@media (max-width: 800px) {
+  body {
+    padding: 100px 30px 70px 30px;
+  }
 }

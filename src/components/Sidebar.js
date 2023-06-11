@@ -11,7 +11,7 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 
-const Sidebar = () => {
+const Sidebar = ({ show }) => {
   const [selected, setSelected] = useState("home");
 
   const location = useLocation();
@@ -31,7 +31,7 @@ const Sidebar = () => {
   }, [location.pathname]);
 
   return (
-    <nav className="sidebar">
+    <nav className={`sidebar ${show ? "show-sidebar" : ""}`}>
       <Link to="/">
         <button className="SB">
           <img src={selected === "home" ? homeSelected : home} alt="home" />

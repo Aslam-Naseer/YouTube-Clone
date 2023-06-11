@@ -5,9 +5,13 @@
   left: 0;
   width: 72px;
 
+  background-color: var(--black-primary);
+
   display: flex;
   flex-direction: column;
   z-index: 200;
+
+  transition: transform 100ms ease-out;
 }
 
 .SB {
@@ -29,4 +33,16 @@
 .SB img {
   width: 24px;
   margin-bottom: 4.5px;
+}
+
+
+@media (max-width: 800px) {
+  .sidebar {
+    transform: translateX(-75px);
+  }
+
+  .sidebar.show-sidebar {
+    transform: translateX(0);
+
+  }
 }

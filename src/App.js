@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
 import Homescreen from "./screens/Homescreen";
@@ -10,15 +10,21 @@ import Searchscreen from "./screens/Searchscreen";
 import Subscriptions from "./screens/Subscriptions";
 import Channelscreen from "./screens/Channelscreen";
 
-const Layout = ({ children }) => (
-  <>
-    <Header />
-    <div>
-      <Sidebar />
-      {children}
-    </div>
-  </>
-);
+const Layout = ({ children }) => {
+  const [showSidebar, setShowSidebar] = useState(false);
+
+  const toggleShowSidebar = () => setShowSidebar(!showSidebar);
+
+  return (
+    <>
+      <Header toggleSidebar={toggleShowSidebar} />
+      <div>
+        <Sidebar show={showSidebar} />
+        {children}
+      </div>
+    </>
+  );
+};
 
 const App = () => {
   const navigate = useNavigate();
