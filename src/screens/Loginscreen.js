@@ -9,7 +9,7 @@ const Loginscreen = () => {
   const navigate = useNavigate();
   const authStatus = useSelector((state) => state.auth.user);
   useEffect(() => {
-    if (authStatus) navigate("/");
+    if (authStatus) navigate(-1);
   }, [authStatus, navigate]);
 
   const handler = async () => {
