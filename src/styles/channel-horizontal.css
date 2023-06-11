@@ -63,3 +63,29 @@
 .sub-btn-channel-horizontal.subbed:hover {
   background-color: #444;
 }
+
+@media (max-width: 700px) {
+  .channel-div-horizontal .img-container {
+    width: 205px;
+  }
+
+  .searchScreen .description-horizontal {
+    -webkit-line-clamp: 1;
+  }
+
+  .channel-description {
+    display: none;
+  }
+
+}
+
+@media (min-width: 700px) and (max-width: 900px) {
+
+  .search-screen-div>.channel-div-horizontal {
+    grid-template-columns: 3fr 2fr 1fr;
+  }
+
+  .channel-div-horizontal .img-container {
+    width: 100%;
+  }
+}
