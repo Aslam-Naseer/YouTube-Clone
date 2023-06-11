@@ -98,7 +98,6 @@
 .IB {
   height: 40px;
   width: 40px;
-  margin: 0 5px;
   border-radius: 20px;
   border-style: none;
   transition: background-color 0.2s;
@@ -162,13 +161,13 @@
   background-color: var(--header-hover);
 }
 
+
 @media (max-width: 650px) {
-  .search-bar {
-    display: none;
+  .right-section {
+    justify-content: end;
   }
 
-  .mid-section button {
-    border-style: none;
-    background-color: white;
+  .mid-section {
+    display: none;
   }
 }
