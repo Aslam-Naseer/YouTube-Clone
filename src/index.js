@@ -10,17 +10,17 @@ import store from "./redux/store";
 
 import "./styles/general.css";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Loginscreen from "./screens/Loginscreen";
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/auth" element={<Loginscreen />}></Route>
         <Route path="/*" element={<App />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </Provider>,
   document.getElementById("root")
 );
