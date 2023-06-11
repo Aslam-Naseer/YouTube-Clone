@@ -19,13 +19,13 @@ let docRef = null;
 
 onAuthStateChanged(getAuth(), async () => {
   docObj = uid() ? doc(subsCollection, uid()) : null;
+  docRef = uid() ? await getDoc(docObj) : null;
+  store.dispatch(setSubbedChannels());
 });
 
 onSnapshot(subsCollection, async (data) => {
   try {
     docRef = uid() ? await getDoc(docObj) : null;
-    // const changes = data.docChanges();
-
     store.dispatch(setSubbedChannels());
   } catch (error) {
     console.error(error);
