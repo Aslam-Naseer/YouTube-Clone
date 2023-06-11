@@ -11,7 +11,7 @@
   flex-direction: column;
   z-index: 200;
 
-  transition: transform 100ms ease-out;
+  transition: transform 70ms ease-out;
 }
 
 .SB {
