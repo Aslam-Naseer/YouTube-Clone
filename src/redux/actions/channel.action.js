@@ -76,7 +76,7 @@ export const getChannelVideos = (id) => async (dispatch) => {
       params: {
         part: "snippet,contentDetails",
         playlistId: uploadPlaylistId,
-        maxResults: 10,
+        maxResults: 30,
       },
     });
     dispatch({ type: CHANNEL_VIDEOS_SUCCESS, payload: data.items });

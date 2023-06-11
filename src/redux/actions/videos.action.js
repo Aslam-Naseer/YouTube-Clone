@@ -23,7 +23,7 @@ export const getPopularVideos = () => async (dispatch, getState) => {
       params: {
         part: "snippet,contentDetails,statistics",
         chart: "mostPopular",
-        maxResults: 12,
+        maxResults: 18,
         pageToken: getState().homeVids.nextPageToken,
       },
     });
@@ -49,7 +49,7 @@ export const getCategoryVideos = (query) => async (dispatch, getState) => {
     const { data } = await fetchData("/search", {
       params: {
         part: "snippet",
-        maxResults: 12,
+        maxResults: 18,
         q: query,
         type: "video",
         pageToken: getState().homeVids.nextPageToken,
@@ -99,7 +99,7 @@ export const getRelatedVideos = (id) => async (dispatch) => {
       params: {
         part: "snippet",
         relatedToVideoId: id,
-        maxResults: 3,
+        maxResults: 15,
         type: "video",
       },
     });
@@ -123,7 +123,7 @@ export const getSearchedVideos = (query) => async (dispatch) => {
     const { data } = await fetchData("/search", {
       params: {
         part: "snippet",
-        maxResults: 3,
+        maxResults: 30,
         q: query,
         type: "video,channel",
       },
