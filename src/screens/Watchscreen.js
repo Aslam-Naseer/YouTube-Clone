@@ -113,7 +113,7 @@ const Watchscreen = () => {
 
         <div className="more-details">
           <div className="views-release">
-            <span>{numeral(statistics?.likeCount).format(0, 0.0)} views</span>
+            <span>{numeral(statistics?.viewCount).format(0, 0.0)} views</span>
             &nbsp;&nbsp;
             <span>
               {moment().subtract(7, "days").isBefore(snippet?.publishedAt)
