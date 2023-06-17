@@ -8,6 +8,16 @@ import { useDispatch } from "react-redux";
 
 import "../styles/category-bar.css";
 
+const scrollLeft = (e) => {
+  const subHeader = document.querySelector(".subheader");
+  subHeader.scrollLeft += -250;
+};
+
+const scrollRight = (e) => {
+  const subHeader = document.querySelector(".subheader");
+  subHeader.scrollLeft += 250;
+};
+
 const CategoriesBar = () => {
   const [selected, setSelected] = useState("All");
   const dispatch = useDispatch();
@@ -31,7 +41,17 @@ const CategoriesBar = () => {
     )
   );
 
-  return <nav className="subheader">{divs}</nav>;
+  return (
+    <div className="categories-bar">
+      <button className="categories-next-prev" onClick={scrollLeft}>
+        &#8672;
+      </button>
+      <nav className="subheader">{divs}</nav>
+      <button className="categories-next-prev" onClick={scrollRight}>
+        &#8674;
+      </button>
+    </div>
+  );
 };
 
 export default CategoriesBar;
